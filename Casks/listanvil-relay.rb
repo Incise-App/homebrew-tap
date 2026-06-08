@@ -2,10 +2,18 @@ cask "listanvil-relay" do
   version "0.1.0"
   sha256 "08f91e8f6f92b9f4924f07a7d9b06536413bca4eeb95ecaf5d8287116258ed9b"
 
-  url "https://github.com/ihistand/homebrew-tap/releases/download/relay-v#{version}/ListAnvil-Relay.dmg"
+  url "https://github.com/ihistand/homebrew-tap/releases/download/relay-v#{version}/ListAnvil-Relay.dmg",
+      verified: "github.com/ihistand/homebrew-tap/"
   name "ListAnvil Relay"
   desc "Local desktop relay worker for ListAnvil marketplace listings"
   homepage "https://listanvil.com/"
+
+  # This tap also hosts other apps' releases, so scope livecheck to the relay-v* tags.
+  livecheck do
+    url :url
+    regex(/relay[._-]v?(\d+(?:\.\d+)+)/i)
+    strategy :github_releases
+  end
 
   depends_on macos: :ventura
   depends_on arch: :arm64
