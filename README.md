@@ -19,3 +19,11 @@ To install:
 ```bash
 brew install --cask incise
 ```
+
+### ListAnvil Relay
+The local desktop relay worker for [ListAnvil](https://listanvil.com/) — posts marketplace listings from your own Mac and IP. Apple Silicon (arm64) only.
+
+To install:
+```bash
+brew install --cask listanvil-relay
+```
