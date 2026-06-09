@@ -4,7 +4,7 @@ cask "incise" do
 
   url "https://github.com/ihistand/homebrew-tap/releases/download/v#{version}/Incise.dmg"
   name "Incise"
-  desc "Precise native macOS text editor"
+  desc "Precise native text editor"
   homepage "https://incise.dev/"
 
   depends_on macos: :ventura
