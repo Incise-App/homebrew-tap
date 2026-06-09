@@ -7,7 +7,7 @@ cask "incise" do
   desc "Precise native macOS text editor"
   homepage "https://incise.dev/"
 
-  depends_on macos: ">= :ventura"
+  depends_on macos: :ventura
 
   app "Incise.app"
 
