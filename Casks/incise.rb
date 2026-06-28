@@ -1,6 +1,6 @@
 cask "incise" do
-  version "1.3.0"
-  sha256 "e48b427fdd64fd443a21ead9ed44c3f503d6777261d7c8f0361a33ce26a3a7fe"
+  version "1.4.0"
+  sha256 "3ae82024f16e73fa3121bfa64189082cb7c332a2c15c4dc93932582ac0c88278"
 
   url "https://github.com/ihistand/homebrew-tap/releases/download/v#{version}/Incise.dmg"
   name "Incise"
@@ -10,6 +10,7 @@ cask "incise" do
   depends_on macos: :ventura
 
   app "Incise.app"
+  binary "#{appdir}/Incise.app/Contents/Resources/incise"
 
   zap trash: [
     "~/Library/Application Support/Incise",
