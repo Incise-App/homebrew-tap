@@ -1,21 +1,16 @@
-# Homebrew Tap (ihistand)
+# Incise Homebrew Tap
 
-A custom Homebrew Tap containing casks and formulae for my personal and commercial macOS applications.
+The Homebrew tap for [Incise](https://incise.dev) — a precise, native macOS text editor.
 
-## Installation
-
-To add this tap to your Homebrew installation, run:
+## Install
 
 ```bash
-brew tap ihistand/tap
+brew install --cask incise-app/tap/incise
 ```
 
-## Available Casks
+Or add the tap first, then install:
 
-### Incise
-A precise native macOS text editor.
-
-To install:
 ```bash
+brew tap incise-app/tap
 brew install --cask incise
 ```
