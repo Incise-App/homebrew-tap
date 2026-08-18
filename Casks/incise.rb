@@ -12,6 +12,17 @@ cask "incise" do
   app "Incise.app"
   binary "#{appdir}/Incise.app/Contents/Resources/incise"
 
+  caveats <<~EOS
+    If the Mac App Store edition of Incise is already in /Applications, this
+    install fails with "there is already an App at /Applications/Incise.app".
+    Either delete the App Store copy first, or let Homebrew replace it:
+
+      brew install --cask --force incise
+
+    The App Store build is sandboxed, so its preferences and last session do
+    not carry over. Your files are untouched.
+  EOS
+
   zap trash: [
     "~/Library/Application Support/Incise",
     "~/Library/Caches/dev.incise.app",
