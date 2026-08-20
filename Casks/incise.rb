@@ -1,11 +1,16 @@
 cask "incise" do
-  version "1.12.23"
-  sha256 "d1ccdf5e2f4db0ccf7f341d16cc696a94266eb931458a08e54917a5aaee3a7c9"
+  version "1.12.24"
+  sha256 "6aba36fbd3cceba83b6d42a85482b0f4b9685bfa4f54c12b15334bdbdc66d77c"
 
   url "https://github.com/Incise-App/homebrew-tap/releases/download/v#{version}/Incise.dmg"
   name "Incise"
   desc "Precise native text editor"
   homepage "https://incise.dev/"
+
+  # The app updates itself via Sparkle from 1.12.24 on; plain `brew upgrade`
+  # skips it so brew doesn't reinstall over a newer self-updated copy
+  # (`brew upgrade --greedy` still forces it).
+  auto_updates true
 
   depends_on macos: :ventura
 
