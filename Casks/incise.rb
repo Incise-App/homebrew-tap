@@ -7,9 +7,17 @@ cask "incise" do
   desc "Precise native text editor"
   homepage "https://incise.dev/"
 
-  # The app updates itself via Sparkle from 1.12.24 on; plain `brew upgrade`
-  # skips it so brew doesn't reinstall over a newer self-updated copy
-  # (`brew upgrade --greedy` still forces it).
+  # The app updates itself via Sparkle from 1.12.24 on. This declares that, but
+  # it no longer stops `brew upgrade`: Homebrew 6.x upgrades auto-updating casks
+  # by default, and only HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS=1 restores the
+  # old skip (checked against 6.0.18 on 2026-08-22 — an earlier version of this
+  # comment claimed the opposite).
+  #
+  # Reinstalling over a copy Sparkle already updated is harmless only while the
+  # cask is never behind the appcast. The release runbook guarantees that by
+  # pushing the cask (step 5) before publishing the appcast (step 5b); reverse
+  # that order and `brew upgrade` silently downgrades anyone who took the
+  # in-app update.
   auto_updates true
 
   depends_on macos: :ventura
