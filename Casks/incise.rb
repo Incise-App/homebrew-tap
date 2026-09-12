@@ -19,11 +19,24 @@ cask "incise" do
   # that order and `brew upgrade` silently downgrades anyone who took the
   # in-app update.
   auto_updates true
-
   depends_on macos: :ventura
 
   app "Incise.app"
   binary "#{appdir}/Incise.app/Contents/Resources/incise"
+
+  # Two Application Support directories, deliberately: ViewMetadataStore writes
+  # "Incise" (per-file column widths and table state) while SessionManager writes
+  # "dev.incise.app" (session and unsaved drafts). Missing the second one left a
+  # zapped install with its tabs and drafts intact.
+  zap trash: [
+    "~/Library/Application Support/dev.incise.app",
+    "~/Library/Application Support/Incise",
+    "~/Library/Caches/dev.incise.app",
+    "~/Library/HTTPStorages/dev.incise.app",
+    "~/Library/Preferences/dev.incise.app.plist",
+    "~/Library/Saved Application State/dev.incise.app.savedState",
+    "~/Library/WebKit/dev.incise.app",
+  ]
 
   caveats <<~EOS
     If the Mac App Store edition of Incise is already in /Applications, this
@@ -35,11 +48,4 @@ cask "incise" do
     The App Store build is sandboxed, so its preferences and last session do
     not carry over. Your files are untouched.
   EOS
-
-  zap trash: [
-    "~/Library/Application Support/Incise",
-    "~/Library/Caches/dev.incise.app",
-    "~/Library/Preferences/dev.incise.app.plist",
-    "~/Library/Saved Application State/dev.incise.app.savedState",
-  ]
 end
