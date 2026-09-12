@@ -38,10 +38,18 @@ cask "incise" do
     "~/Library/WebKit/dev.incise.app",
   ]
 
+  # --force is documented as "overwrite existing files", which is not the same as
+  # replacing the bundle: App Store files the Developer ID build does not ship —
+  # Contents/_MASReceipt above all — can survive inside the new app. Quitting and
+  # trashing first is one extra step and leaves nothing behind, so that is what
+  # this recommends; --force stays the recovery path for anyone already stuck.
   caveats <<~EOS
-    If the Mac App Store edition of Incise is already in /Applications, this
-    install fails with "there is already an App at /Applications/Incise.app".
-    Either delete the App Store copy first, or let Homebrew replace it:
+    Replacing the Mac App Store edition? Quit Incise, drag it from /Applications
+    to the Trash, then install. That leaves no App Store files inside the new
+    app.
+
+    Installing over it instead fails with "there is already an App at
+    /Applications/Incise.app". If you are already stuck there:
 
       brew install --cask --force incise
 
