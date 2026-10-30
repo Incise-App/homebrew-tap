@@ -1,6 +1,6 @@
 cask "incise" do
-  version "1.13.4"
-  sha256 "8a80d30832d5adc37950d2f4fc4ecfaa7530425f67c265095a2b8ca92eec9b87"
+  version "1.13.5"
+  sha256 "9b435c6e5e8017c77d974d8963a3c8941558fb001294e97076c98b80647fbd75"
 
   url "https://github.com/Incise-App/homebrew-tap/releases/download/v#{version}/Incise.dmg"
   name "Incise"
